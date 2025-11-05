@@ -18,12 +18,7 @@ export default function robots(): MetadataRoute.Robots {
         '/api/*',
       ],
     },
-    sitemap: [
-      `${siteUrl}/sitemap.xml`,
-      `${siteUrl}/sitemap-clinics.xml`,
-    ],
-    // Optional: you can safely drop "host" entirely.
-    // It's not needed and sometimes confuses crawlers in multi-domain setups.
-    // host: siteUrl.replace(/^https?:\/\//, ''),
+    // Next.js 15 serves sitemaps at /sitemap.xml automatically from sitemap.ts
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 }
