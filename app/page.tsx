@@ -3,15 +3,27 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Logo from '@/components/Logo';
 import ComparisonFeatureBox from '@/components/ComparisonFeatureBox';
+import { generateOrganizationSchema } from '@/lib/structuredData';
 
 // Lazy-load interactive client islands (no { ssr:false } here)
 const SearchBarClient = dynamic(() => import('@/components/SearchBarClientWrapper'));
 const StatsSection    = dynamic(() => import('@/components/StatsSection'));
 const StateGridClient = dynamic(() => import('@/components/StateGrid'));
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dermaclinicnearme.com';
+
 export default function Home() {
+  // Generate Organization schema for homepage SEO
+  const organizationSchema = generateOrganizationSchema(BASE_URL);
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <>
+      {/* Organization Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+  
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Top Nav with Logo */}
       <header className="bg-white border-b" role="banner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
@@ -480,5 +492,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
