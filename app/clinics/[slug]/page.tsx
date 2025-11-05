@@ -1,4 +1,5 @@
-export const dynamic = 'force-dynamic';
+//export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // 1 hour
 
 import { createSupabaseClient } from '@/lib/supabase';
 import { Clinic } from '@/lib/dataTypes';
