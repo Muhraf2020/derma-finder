@@ -33,6 +33,9 @@ export const metadata: Metadata = {
     'nearest dermatologist',
   ],
   authors: [{ name: 'Derma Clinic Near Me' }],
+  alternates: {
+    canonical: 'https://dermaclinicnearme.com',
+  },
   openGraph: {
     title: 'Derma Clinic Near Me',
     description: 'Find the best dermatology clinics across the USA',
