@@ -475,8 +475,8 @@ export default function Home() {
             <div>
               <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Quick Links</h3>
               <ul className="space-y-2 text-gray-400 text-xs sm:text-sm">
-                <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-white">Terms of Service</a></li>
+                <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
                 <li><a href="https://dermaclinicnearme.com/advertise#contact" className="hover:text-white">Contact Us</a></li>
               </ul>
             </div>
