@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // google: 'your-google-verification-code',
+    google: 'q9BQbxhjtOSpCN8Y0xFUwcf7p3rWLX9lqt4dQDUrxc0',
   },
 
   // ✅ favicon + manifest are still correct
