@@ -64,13 +64,9 @@ export const metadata: Metadata = {
     google: 'q9BQbxhjtOSpCN8Y0xFUwcf7p3rWLX9lqt4dQDUrxc0',
   },
 
-  // ✅ favicon + manifest are still correct
+  // Icons: app/favicon.ico and app/icon.png are auto-detected by Next.js 15
+  // Only need to specify apple-touch-icon and manifest explicitly
   icons: {
-    icon: [
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon.ico' },
-    ],
     apple: [
       {
         url: '/apple-touch-icon.png',
@@ -78,14 +74,9 @@ export const metadata: Metadata = {
         type: 'image/png',
       },
     ],
-    other: [
-      {
-        rel: 'manifest',
-        url: '/site.webmanifest',
-      },
-    ],
   },
 
+  manifest: '/site.webmanifest',
   themeColor: '#2563eb',
 };
 
@@ -102,14 +93,8 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <head>
-        {/* Fallback tags are safe to keep */}
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#2563eb" />
-      </head>
-
+      {/* Next.js 15 automatically injects favicon from app/favicon.ico and app/icon.png */}
+      {/* Metadata API handles all other meta tags */}
       <body className={inter.className}>
         {/* Global comparison state provider wraps the whole app */}
         <CompareProvider>
