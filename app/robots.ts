@@ -2,29 +2,28 @@
 import type { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  // Normalize base URL (no trailing slash)
-  const siteUrl = (process.env.SITE_URL || 'https://dermaclinicnearme.com').replace(/\/$/, '');
+  const siteUrl = (
+    process.env.SITE_URL ||
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    'https://dermaclinicnearme.com'
+  ).replace(/\/$/, '');
 
   return {
-    rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: [
-          '/api/',
-          // block raw parammed search/list pages from being indexed
-          '/clinics?',
-          '/clinics?*',
-          '/state/*?*',
-        ],
-      },
-    ],
-    // Tell crawlers about BOTH sitemaps:
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: [
+        // Only block true API endpoints, not page URLs
+        '/api/',
+        '/api/*',
+      ],
+    },
     sitemap: [
       `${siteUrl}/sitemap.xml`,
       `${siteUrl}/sitemap-clinics.xml`,
     ],
-    // Host directive (no protocol)
-    host: siteUrl.replace(/^https?:\/\//, ''),
+    // Optional: you can safely drop "host" entirely.
+    // It's not needed and sometimes confuses crawlers in multi-domain setups.
+    // host: siteUrl.replace(/^https?:\/\//, ''),
   };
 }
